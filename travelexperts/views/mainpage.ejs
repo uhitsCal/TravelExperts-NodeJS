@@ -1,0 +1,268 @@
+<!--
+     
+     Team #3 -- OOSD Threaded Project Part 1
+     mainpage.ejs
+     
+     This file contains the home page for the Travel Experts website.
+     
+     Authors: Alisa Kim
+-->
+<%- include("header") %>
+    <title>Travel Experts</title>
+
+
+    <!-- Text in the picture formatting -->
+
+    <style>
+        hr {
+            border-style: line;
+            background-color: gray;
+            border-width: 1px;
+            border-bottom: none;
+
+        }
+
+        .background-image {
+            background-image: url("/media/plane.jpg");
+            height: 500px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        .text {
+            text-align: center;
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+
+        body {
+            text-align: center;
+            /* background-color: #fffae3; */
+            line-height: 2;
+        }
+
+        .yes {
+            text-decoration: underline;
+        }
+
+        #reviews {
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+<%- include("navbar") %>
+        <div class="background-image">
+            <div class="text">
+                <h1>Say <span class="yes"><em>YES</em></span> to new adventures</h1>
+                <p>Embark on your dream adventure with <em>peace of mind</em>, knowing that every aspect of your journey
+                    is
+                    expertly
+                    handled</p>
+            </div>
+        </div>
+    <!-- ======= About US Section ======= -->
+    <hr>
+    <section id="about" class="about section-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+                    <img src="/media/about.jpg" class="img-fluid" alt="agent making notes about client's preferences">
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0">
+                    <h3>About Us</h3>
+                    <p>
+                        We are a leading travel agency dedicated to creating extraordinary experiences for travellers
+                        like you.
+                        With understanting uniqueness of every traveler, and our passion for exploration and meticulous
+                        attention
+                        to detail, we strive to make your travel dreams a reality.
+                    </p>
+                    <p>Travel Experts will take you anywhere from exotic beach destinations to bustling cities, from
+                        breathtaking natural wonders to enchanting historical sites, we have the expertise to curate
+                        unforgettable
+                        journeys across the globe.
+                    </p>
+                    <ul>
+                        <li>Tailored services & personalized itineraries that surpass your expectations.</li>
+                        <li>Access to exclusive offers and hidden gems, to unlock the true essence of each destination
+                            you visit.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+        <div class="container">
+
+            <div class="section-title">
+                <h3>Services</h3>
+                <p>Let's explore what we offer</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="icon-box">
+                        <img class="img1"
+                            src="https://images.squarespace-cdn.com/content/v1/55668388e4b0992f1a75b868/1587565940653-GWWMM868NCTDRMIEP1MJ/kicking-horse-lodging-website-header-20150622.jpg?format=1500w"
+                            width="350" alt="picture of hotel">
+                        <h4>Lodging</a></h4>
+                        <p>Booking lodging is an essential part of travel experince so we find best avalable deals for
+                            you to you
+                            to book from the comform of your own home.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4 mt-lg-0">
+                    <div class="icon-box">
+                        <img class="img1" src="https://wallpaperaccess.com/full/1287373.jpg" width="280"
+                            alt="airplane sunrise">
+                        <h4>Flights</a></h4>
+                        <p>Fly anytime and anywhere your heart desires with special rates offered when booking through
+                            Travel
+                            Experts Web orMobile
+                            Application.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <div class="icon-box">
+                        <img class="img1" src="https://www.aljazeratravel.com/images/templatemo_slide_1.jpg" width="300"
+                            alt="villas in the ocean">
+                        <h4>Travel Packages & Tours</a></h4>
+                        <p>Have a dream destination in mind? Whether you want to follow your appetite to Tuscany or go
+                            wild in
+                            World's greatest
+                            national parks, our guided travel packages and tours will get you there.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <div class="icon-box">
+                        <img class="img1"
+                            src="https://imgcdn.bokun.tools/9a9762d7-7ad6-4c13-b15a-76ea194e8e74.jpeg?w=1920&h=1920"
+                            width="290" alt="car rental">
+                        <h4>Vehicle Rentals</a></h4>
+                        <p>Convenince of serching and reserving available vehicles for easy pickup at airports from the
+                            desktop or
+                            mobile app.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+        <h1 id="reviews"><span class="reviews">Testimonials</span> 👏</h1>
+        <div class="container" data-aos="zoom-in">
+
+            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <h3>Saul Goodman</h3>
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                Travel Experts exceeded all my expectations and provided me with an unforgettable travel
+                                experience.
+                                From the
+                                moment I reached out to them, their team of dedicated experts was there to guide me
+                                through the entire
+                                process🔥🔥🔥 <br />
+                                ⭐⭐⭐⭐⭐
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <img src="/media/testimonials-2.jpg" width="50" class="testimonial-img" alt="">
+                            <h3>Sara Wilsson</h3>
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                Last week travelled to London, booked all-inclusive Europe tour via Travel Experts
+                                wesite. Very pleased how
+                                quickly and pain free the process was.Thank you Travel Experts!!!<br />
+                                ⭐⭐⭐⭐⭐
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <h3>Jena Karlis</h3>
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                What impressed me the most was their attention to details👍. They took the time to
+                                understand my preferences
+                                and
+                                crafted a personalized itinerary that perfectly suited my desires. Every aspect of the
+                                trip, from flights to
+                                accommodations and activities, was meticulously planned and flawlessly executed🤩.<br />
+                                ⭐⭐⭐⭐⭐
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <img src="/media/testimonials-4.jpg" width="50" class="testimonial-img" alt="">
+                            <h3>Matt Brandon</h3>
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                Was able to adjust my reservation to get me exactly into the room I needed 😄. Agent was
+                                thorough and
+                                informative.
+                                Excellent
+                                support! ”<br />
+                                ⭐⭐⭐⭐⭐<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <img src="/media/testimonials-5.jpg" width="50" class="testimonial-img" alt="">
+                            <h3>John Larson</h3>
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                I highly recommend Travel Experts to anyone seeking a memorable and hassle-free travel
+                                experience. Their
+                                passion
+                                for
+                                exploration, attention to detail, and commitment to customer satisfaction make them an
+                                exceptional travel
+                                agency. <br />
+                                ⭐⭐⭐⭐⭐<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+    </section><!-- End Testimonials Section -->
+
+    <footer class="pt-4 mt-md-5 pt-md-5 p-1 border-top">
+        <small class="d-block text-body-secondary">Copyright &copy; 2023 Travel Experts</small>
+    </footer>
+
+</body>
+
+</html>

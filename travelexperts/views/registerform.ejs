@@ -1,0 +1,300 @@
+<!--
+     Team #3 -- OOSD Threaded Project Part 1
+     registerform.ejs
+     
+     This file contains the registration page for the Travel Experts website.
+     
+     Authors: Calvin Chen
+-->
+<%- include('header') %>
+		<title>Register</title>
+		<!-- custom CSS for design of the page -->
+		<style>
+			body {
+				align-content: center;
+				width: 100vw;
+				height: 100vh;
+			}
+			img {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				transform: scale(1.1);
+				z-index: -1;
+				filter: blur(10px);
+			}
+			
+			form {
+				width: fit-content;
+				color: #364156;
+				display: flex;
+				background-color: #fffae3;
+				border-radius: 20px;
+			}
+			#div2 
+			{	
+				max-width: 470px;
+				max-height: 800px;
+				background-color: #fffae3;
+				border-radius: 20px;
+			}
+			/* password verification display */
+			.wrong .fa-check 
+			{
+				display: none;
+			}
+
+			.good .fa-times
+			{
+				display: none;
+			}
+			/* media query to adjust page for mobile support */
+			@media screen and (max-width: 768px)
+			{
+				#div2 {
+					height: 100%;
+					width: 100%;
+					border: none;
+					border-radius: 0px;
+				}
+				form {
+					background-color: #fffae3;
+					width: 100vw;
+					border-radius: 0px;
+					height: 100vh;
+					
+				}
+				body {
+					background-color: #fffae3;
+				}
+				#head {
+					margin-bottom: 0px;
+				}
+			}
+		</style>
+		<!-- script to verify the input of the password to fit the requirements -->
+	<script>
+			addEventListener("DOMContentLoaded", (event) => {
+			const password = document.getElementById("password-input");
+			const passwordAlert = document.getElementById("password-alert");
+			const requirements = document.querySelectorAll(".requirements");
+			let lengBoolean, bigLetterBoolean, numBoolean, specialCharBoolean;
+			let leng = document.querySelector(".leng");
+			let bigLetter = document.querySelector(".big-letter");
+			let num = document.querySelector(".num");
+			let specialChar = document.querySelector(".special-char");
+			const specialChars = "!@#$%^&*()-_=+[{]}\\|;:'\",<.>/?`~";
+			const numbers = "0123456789";
+
+			requirements.forEach((element) => element.classList.add("wrong"));
+
+			password.addEventListener("focus", () => {
+				passwordAlert.classList.remove("d-none");
+				if (!password.classList.contains("is-valid")) {
+					password.classList.add("is-invalid");
+				}
+			});
+
+			password.addEventListener("input", () => {
+				let value = password.value;
+				if (value.length < 8) {
+					lengBoolean = false;
+				} else if (value.length > 7) {
+					lengBoolean = true;
+				}
+
+				if (value.toLowerCase() == value) {
+					bigLetterBoolean = false;
+				} else {
+					bigLetterBoolean = true;
+				}
+
+				numBoolean = false;
+				for (let i = 0; i < value.length; i++) {
+					for (let j = 0; j < numbers.length; j++) {
+						if (value[i] == numbers[j]) {
+							numBoolean = true;
+						}
+					}
+				}
+
+				specialCharBoolean = false;
+				for (let i = 0; i < value.length; i++) {
+					for (let j = 0; j < specialChars.length; j++) {
+						if (value[i] == specialChars[j]) {
+							specialCharBoolean = true;
+						}
+					}
+				}
+
+				if (lengBoolean == true && bigLetterBoolean == true && numBoolean == true && specialCharBoolean == true) {
+					password.classList.remove("is-invalid");
+					password.classList.add("is-valid");
+
+					requirements.forEach((element) => {
+						element.classList.remove("wrong");
+						element.classList.add("good");
+					});
+					passwordAlert.classList.remove("alert-warning");
+					passwordAlert.classList.add("alert-success");
+				} else {
+					password.classList.remove("is-valid");
+					password.classList.add("is-invalid");
+
+					passwordAlert.classList.add("alert-warning");
+					passwordAlert.classList.remove("alert-success");
+
+					if (lengBoolean == false) {
+						leng.classList.add("wrong");
+						leng.classList.remove("good");
+					} else {
+						leng.classList.add("good");
+						leng.classList.remove("wrong");
+					}
+
+					if (bigLetterBoolean == false) {
+						bigLetter.classList.add("wrong");
+						bigLetter.classList.remove("good");
+					} else {
+						bigLetter.classList.add("good");
+						bigLetter.classList.remove("wrong");
+					}
+
+					if (numBoolean == false) {
+						num.classList.add("wrong");
+						num.classList.remove("good");
+					} else {
+						num.classList.add("good");
+						num.classList.remove("wrong");
+					}
+
+					if (specialCharBoolean == false) {
+						specialChar.classList.add("wrong");
+						specialChar.classList.remove("good");
+					} else {
+						specialChar.classList.add("good");
+						specialChar.classList.remove("wrong");
+					}
+				}
+			});
+
+			password.addEventListener("blur", () => {
+				passwordAlert.classList.add("d-none");
+			});
+		});
+	</script>
+	</head>
+		<body>
+			<!-- include a navigation bar for consistency across the pages -->
+			<%- include("navbar") %>
+			<img src="/media/beach.png">
+			<!-- form for the inputs -->
+			<form method="post" action="/register" class="mx-auto">
+				<div id="div2" class="container px-3 py-3">
+					<h1 class="text-center">Customer Registration</h1>
+						<div class="row">
+							<div class="col">
+								<label for="fname" class="form-label">First Name:</label>
+								<input type="text" id="fname" class="form-control" placeholder="First name" name="CustFirstName" required>
+							</div>
+							<div class="col">
+								<label for="lname" class="form-label">Last Name:</label>
+								<input type="text" id="lname" class="form-control" placeholder="Last Name" name="CustLastName" required>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label for="address" class="form-label">Address:</label>
+								<input type="text" id="address" class="form-control" placeholder="Address" name="CustAddress" required>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label for="city" class="form-label">City:</label>
+								<input type="text" id="city" class="form-control" placeholder="City" name="CustCity" required>
+							</div>
+							<div class="col">
+								<label for="province" class="form-label">Province:</label>
+								<input type="text" id="province" class="form-control" placeholder="Province" name="CustProv" required pattern="^[A-Za-z]{2}$">
+							</div>
+							<div class="col">
+								<label for="postalCode" class="form-label">Postal Code:</label>
+								<input type="text" id="postalCode" class="form-control" placeholder="Postal Code" pattern="^((\d{5}-\d{4})|(\d{5})|([A-Z|a-z]\d[A-Z|a-z]\d[A-Z|a-z]\d))$" name="CustPostal">
+							</div>
+							<div class="col">
+								<label for="country" class="form-label">Country:</label>
+								<input type="text" id="country" class="form-control" placeholder="Country" name="CustCountry" required>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label for="email" class="form-label">Email:</label>
+								<input type="email" id="email" class="form-control" placeholder="name@example.com" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" name="CustEmail">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label for="homenum" class="form-label">Home Phone number:</label>
+								<input type="text" id="homenum" class="form-control" placeholder="" name="CustHomePhone" required>
+							</div>
+							<div class="col">
+								<label for="busnum" class="form-label">Business Phone number:</label>
+								<input type="text" id="busnum" class="form-control" placeholder="" name="CustBusPhone" required>
+							</div>
+						</div>
+					<h1 class="text-center">Create an Account</h1>
+					<div class="row">
+						<div class="col">
+							<label for="user" class="form-label">Username: </label>
+							<input type="text" id="user" class="form-control" placeholder="Username" name="username" required>
+						</div>
+					</div>
+						<div class="col">
+							<label for="password" class="form-label">Password: </label>
+							<input type="password" class="form-control" placeholder="Password" name="password" id="password-input"/>
+							<div class="valid-feedback">Good</div>
+							<div class="invalid-feedback">Wrong</div>
+						</div>
+					<!-- input for the password requirements -->
+					<div class="col ">
+						<div class="alert px-4 py-3 mb-0 d-none " role="alert" data-mdb-color="warning" id="password-alert">
+							<ul class="list-unstyled mb-0">
+								<li class="requirements leng">
+									<i class="fas fa-check text-success me-2"></i>
+									<i class="fas fa-times text-danger me-3"></i>
+									must have at least 8 characters
+								</li>
+								<li class="requirements big-letter">
+									<i class="fas fa-check text-success me-2"></i>
+									<i class="fas fa-times text-danger me-3"></i>
+									must have at least 1 capital letter
+								</li>
+								<li class="requirements num">
+									<i class="fas fa-check text-success me-2"></i>
+									<i class="fas fa-times text-danger me-3"></i>
+									must have at least 1 number
+								</li>
+								<li class="requirements special-char">
+									<i class="fas fa-check text-success me-2"></i>
+									<i class="fas fa-times text-danger me-3"></i>
+									must have at least 1 special character
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div id="div4" class="container p-4 text-center">
+						<div class="row">
+							<div class="col">
+							<!-- buttons on the bottom to react with a history() method, submit, and reset -->
+								<button class="btn btn-primary" onclick="history.back()">Back</button>
+								<button class="btn btn-primary" type="submit" value="Submit">Sign up</button>
+								<button class="btn btn-primary" type="reset" onclick="return confirm('would you like to clear the form?')">Reset</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+	</body>
+</html>

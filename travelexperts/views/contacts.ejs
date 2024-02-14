@@ -1,0 +1,96 @@
+<!--
+     
+     Team #3 -- OOSD Threaded Project Part 1
+     contacts.ejs
+     
+     This file contains the contact page for the Travel Experts website.
+     
+     Authors: Cameron Cote
+-->
+<%- include("header") %>
+		<style>
+
+
+			h1.head {
+				text-align: center;
+				background-color: #AFDDFF;
+			}
+
+		</style>
+		<title> ~Contacts~ </title>
+<!-- I include the header right above, and inside my header file I do not include a </head> so that if I want I can add more things to it just in case.
+Since I include bootstrap in the header I don't have to worry about adding it here.
+
+Remember, include only adds in the text from the file you specify, so it doesn't actually have to be complete.
+You could for example include a bunch of functions in a file and use include to add it in making the website easier to manage later on.
+-->
+
+	</head>
+	<body>
+		<%- include('navbar') %>
+		<img src="/media/Travel.jpg" style="position:fixed; z-index: -1; height:100%; width:100%; transform: scale(1.1); filter: blur(5px); object-fit:stretch;" />
+		<div class = "container-xxl">
+
+			<div class="head">
+				<h1 class="head">Contacts</h1><br />
+			</div>
+			<div style="position:relative; float:left; width:40%; height:40%; left:30%; background-color: #DADAFF;border: 2px outset #A0A0FF; margin-top:10px;" class="Img">
+				<p class="text-center" style="font-size:20px;">Having issues? Contact one of us by email/phone!</p>
+			</div>
+			<div style="width: 70%; margin-top:10px;">
+				<table class="table table-danger table-striped" style="float:left; position:relative; margin-top:10px;" id="tableHead">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Phone</th>
+							<th>Email</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<div style="position:relative; float:right; width:25%; background-color:#DADAFF; margin-top:10px;border: 2px outset #B0C0CF;">
+				<p>
+					If you're still having issues feel free to send us a letter.<br />
+					Our address is: <br />
+					1301 16 Ave NW, Calgary, AB T2M 0L4.<br />
+					<a href="https://www.google.com/maps/dir//1301+16+Ave+NW,+Calgary,+AB+T2M+0L4/@51.0640685,-114.1585793,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x53716f9268a69e81:0xb1db5e68bd61e28!2m2!1d-114.0885397!2d51.0640894?entry=ttu">Map Location</a>
+				</p>
+			</div>
+			
+			<!--
+				This is the script I was talking about before. I set the contacts string here via ejs, afterwards I split the string by semi--colin which is
+				what I specify is the end of a agent. Meaning if there is only 2 semi-colins there will be 3 agents, if there's no semi-colin there is either no agent or one.
+				I then further split the agent's data by commas, 0 being name, 1 being number, 2 being email to then be formatted properly on the page.
+				After it's all been split we then grab the Contact table, using the AddContact function we pass in the Name, Phone Number, and Email in that order into the function
+				which then makes a new item in the table.
+			-->
+			<script>
+				var ContactsString = "<%=contacts%>";
+				var Contacts = ContactsString.split("; ");
+				for (var i = 0; i<Contacts.length; i++){
+					Contacts[i] = Contacts[i].split(", ");
+				}
+				var contactTab = document.getElementById("tableHead");
+				var newtbody = document.createElement("tbody");
+				contactTab.appendChild(newtbody);
+				
+				function AddContact(List){
+					var newTr = document.createElement("tr");
+					for (var i=0; i<List.length; i++){
+						var newTh = document.createElement("th");
+						newTh.innerHTML = List[i];
+						newTr.appendChild(newTh);
+					}
+					if (List[0].includes("Agency")){
+						newTr.setAttribute("class", "table-warning")
+					}
+					newtbody.appendChild(newTr);
+				}
+				for (var i= 0; i<Contacts.length-1; i++){
+					AddContact(Contacts[i]);
+				}
+				
+			</script>
+		</div>
+	</body>
+<%- include("footer") %>

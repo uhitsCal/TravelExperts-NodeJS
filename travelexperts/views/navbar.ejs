@@ -1,0 +1,31 @@
+<!--
+     
+     Team #3 -- OOSD Threaded Project Part 1
+     navbar.ejs
+     
+     This file contains the header/navigation bar for the Travel Experts
+     website. This file is included in every page for a consistent header across
+     the site (almost every page -- not the status ones)
+     
+     Authors: Grayson Germsheid
+-->
+<header>
+  <div class="d-flex flex-column flex-md-row align-items-center pt-2 pb-3 px-2 mb-lg-4 border-bottom">
+    <!-- 
+         The logo is an SVG file w/ included css and this is the only way I could get the css to actually
+         apply
+    -->
+    <object id="logo" type="image/svg+xml" data="/media/logo.svg" class="me-4" style="height: 3rem;"></object>
+    <a href="/home" class="d-flex align-items-center link-body-emphasis text-decoration-none nav-link agency">
+      <span class="fs-4">Travel Experts</span>
+    </a>
+
+    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+      <a class="me-3 py-2 link-body-emphasis text-decoration-none nav-link" href="/home">Home</a>
+      <a class="me-3 py-2 link-body-emphasis text-decoration-none nav-link" href="/packages">Packages</a>
+      <a class="me-3 py-2 link-body-emphasis text-decoration-none nav-link" href="/contacts">Contact</a>
+      <a class="me-3 py-2 link-body-emphasis text-decoration-none nav-link" href="/registration">Register</a>
+      <a class="py-2 link-body-emphasis text-decoration-none nav-link" href="/login">Login</a>
+    </nav>
+  </div>
+</header>

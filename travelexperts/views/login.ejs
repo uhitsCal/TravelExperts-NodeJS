@@ -1,0 +1,65 @@
+<!--
+     
+     Team #3 -- OOSD Threaded Project Part 1
+     login.ejs
+     
+     This file contains the login page for the Travel Experts website.
+     
+     Authors: Calvin Chen
+-->
+<%- include("header") -%>
+	
+	<title>Log in</title>
+	<!-- style for the image on the left -->
+	<style>
+		.bg-image-vertical {
+		position: relative;
+		overflow: hidden;
+		background-repeat: no-repeat;
+		background-position: right center;
+		background-size: auto 100%;
+		}
+	<!-- media query for the responsiveness of the page -->
+		@media (min-width: 1025px) {
+		.h-custom-2 {
+		height: 100%;
+		}
+		}
+	</style>
+	<script>
+	</script>
+	<body>
+	<!-- include a navigation bar for consistency across the pages-->
+	<%- include("navbar") %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 text-black">
+        <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+          <form style="width: 23rem;">
+            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
+				<div class="form-outline mb-4">
+				  <input type="text"  class="form-control form-control-lg" />
+				  <label class="form-label" for="username">Username</label>
+				</div>
+            <div class="form-outline mb-4">
+              <input type="password" class="form-control form-control-lg" />
+              <label class="form-label" for="password">Password</label>
+            </div>
+            <div class="pt-1 mb-4">
+              <button class="btn btn-primary" type="button">Login</button>
+            </div>
+			<!-- an anchor to link back to registration page for the passwords -->
+            <p class="small mb-5 pb-lg-2"><a href="/registration">Forgot password?</a></p>
+            <p>Don't have an account? <a href="/registration">Register here</a></p>
+          </form>
+        </div>
+      </div>
+      <div class="col-sm-6 px-0 d-none d-sm-block">
+        <img src="/media/airport.png"
+          alt="a" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+      </div>
+    </div>
+  </div>
+	</body>
+
+<% include("footer") -%>

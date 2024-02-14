@@ -1,0 +1,73 @@
+<!--
+     Team #3 -- OOSD Threaded Project Part 1
+     thanks.ejs
+     
+     This file contains the thanks page for a successful registration on
+     the Travel Experts website.
+     
+     Authors: Calvin Chen
+-->
+<%- include("header") %>
+	
+	<style>
+		/* style for the page */
+		body {
+				background-color: #fffae3;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100vw;
+				height: 100vh;
+				color: #364156;
+			}
+			img {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				transform: scale(1.1);
+				z-index: -1;
+				filter: blur(10px);
+			}
+		#div2 
+			{	
+				border: 2px solid #dcdcdc;
+				max-width: 470px;
+				max-height: 800px;
+				background-color: #fffae3;
+				border-radius: 10px;
+			}
+		@media screen and (max-width: 570px)
+			{
+				#div2 {
+					height: 100vh;
+					width: 100vw;
+					border: none;
+					border-radius: 0px;
+					box-shadow: none;
+				}
+				form {
+					background-color: #fffae3;
+					
+				}
+				body {
+					background-color: #fffae3;
+				}
+			}	
+	</style>
+	<script>
+		/* timer to redirect back to homepage after loading */
+		var timer = setTimeout(function() {
+            window.location='/home'
+        }, 5000);
+	</script>
+	<body>
+	<img src="/media/beach.png">
+	<div id="div2" class="container px-3 py-3">
+		<h1 class="text-center">Thank you for signing up with Travel Experts!</h1>
+		<h5 class="text-center"><%= message %></h5>
+		<h6 class="text-center">You will be <a href="/home" >redirected</a> in 5 seconds</h6>
+	</div>
+		
+	</body>

@@ -1,0 +1,91 @@
+<!--
+     Team #3 -- OOSD Threaded Project Part 1
+     status.ejs
+     
+     This file contains the status page for the Travel Experts website.
+     Rather than creating separate pages for order success, order failure,
+     errors, etc... I just rolled it all into one ugly package so this page
+     shows for
+        -- 404
+        -- 500
+        -- order success
+        -- package not found (404 variant)
+        -- package expired (401) -- the package exists but is no longer available
+
+     server sets the title, message, background colour, and whether the page
+     redirects automatically
+     
+     Authors: Grayson Germsheid
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <style>
+      /* A lot of this is from before we decided to use bootstrap, so it's a bit of a mix */
+      #status-container {
+        height: 85vh;
+        width: 40rem;
+        max-width: 100%;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        padding-inline: 0.5em;
+        margin-inline: auto;
+      }
+
+      #status-container > .card {
+          width: 100%;
+      }
+
+      #status-container .card * {
+          background-color: <%= colour %>;
+          color: #fafafa;
+          border-color: <%= colour %>;
+      }
+
+      #status-code {
+          font-size: 5em;
+      }
+
+      #status-message {
+          font-size: 1.2em;
+      }
+    </style>
+    <title>
+      <%= status %>
+    </title>
+  </head>
+  <body>
+    <div id="status-container">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="display-1" id="status-code">
+            <%= status %>
+          </h1>
+        </div>
+        <div class="card-body">
+          <p id="status-message">
+          <%= message %>
+          </p>
+        </div>
+      </div>
+      <span class="w-100 text-end">
+        <a class="ms-auto btn btn-primary" href="/home">
+          Home
+        </a>
+      </span>
+    </div>
+    <!-- if server sets { redirect: true } then include a script that automatically
+         redirects the user to the homepage after 60s
+    -->
+    <% if (redirect === true) { %>
+    <script>
+		setTimeout(() => { window.location='/home'; }, 60000);
+    </script>
+    <% } %>
+  </body>
+</html>
